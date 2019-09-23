@@ -1,0 +1,81 @@
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    display: flex;
+    align-items: center;
+  }
+
+  .hoe {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+  
+  /* Custom */
+  .hoe {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    top: 0;
+    font-size: 25px;
+    font-family: "Open Sans", Helvetica;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );
+    background: #5969e2;
+    color: #fff;
+    box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );
+    
+    -webkit-transform: translateZ(0);
+       -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+            transform: translateZ(0);
+    
+    -webkit-transition: all 0.2s ease;
+       -moz-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+  }
+  
+  .hoe:hover {
+    top: -10px;
+    box-shadow: 0px 10px 10px rgba( 15, 165, 60, 0.2 );
+    
+    -webkit-transform: rotateX(20deg);
+       -moz-transform: rotateX(20deg);
+        -ms-transform: rotateX(20deg);
+            transform: rotateX(20deg);
+  }
+  
+  .hoe:active {
+    top: 0px;
+    box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );
+    background: rgba( 20, 224, 133, 1 );
+  }
+
+  /* Remove button styles */
+ .generate {
+   /* Make 'clickable' */
+    cursor: pointer;
+}
+
+.memeimage {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.toptext {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bottomtext {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

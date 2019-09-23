@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+        <link href="{{ url_for('static', filename = 'gen.css') }}" rel="stylesheet">
+    </head>
+    <body class="jumbotron" >
+        <div class="row">
+            <div class="col-lg-6 text-center" style="padding-right:20px; border-right: 4px solid #ccc;">
+                <h1>Random</h1> 
+                <h5 class="p-2">Step 1 : Select a theme</h5>
+                <div class="row pb-2 btn-group" role="group" aria-label="Basic example">
+                    <div class="col-lg-4">
+                        <button type="button" class="btn" id="0">Normie</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <button  type="button" class="btn" id="1">Savage</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <button type="button" class="btn" id="2">Depressing</button>
+                    </div>
+                </div>
+                <div class="row pb-2 btn-group" role="group" aria-label="Basic example">
+                    <div class="col-lg-4">
+                        <button type="button" class="btn" id="3">Unexpected</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <button  type="button" class="btn" id="4" >Frustrated</button>
+                    </div>
+                    <div class="col-lg-4">
+                        <button type="button" class="btn" id="5" >Wholesome</button>
+                    </div>
+                </div>
+
+                <h5 class="p-2">Step 2: Select a category</h5>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <select class="cat_select" name="category" style="width: 100%" ></select>
+                    </div>
+                    <div class="col-lg-3"></div>      
+                </div>
+                
+            </div>
+
+            <div class="col-lg-6 text-center" >
+                <h1>Custom</h1>
+                <h5 class="p-2">Upload an image of your choice</h5>
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <form id="im_form" enctype="multipart/form-data" method="post">
+                            <fieldset>
+                                    <input type="file" class="form-control-file" id="im_upload">
+                                </fieldset>
+                        </form> 
+                    </div>
+                    <div class="col-lg-4"></div> 
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="padding-top: 2%; padding-left: 46%" >
+                <button class="hoe" onclick="memeify()" >Memeify</button>
+        </div>
+
+        <div class="row d-none" id="imgdiv" style="padding-top: 2%; padding-left: 36%">
+            <div class="memeimage">
+                <img src="{{ url_for('static', filename = 'images/advice_dog') }}" height="300" width="400" id="my_image">
+                <h5 class="toptext"> If they study for exam</h5>
+                <h5 class="bottomtext">Question Them</h5> 
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+        <script >
+            var data = [[{'id': 0, 'text': 'annoying_facebook_girl'}, {'id': 1, 'text': 'reddit_alien'}, {'id': 2, 'text': 'creepy_wonka'}, {'id': 3, 'text': 'wrong_lyrics_christina'}, {'id': 4, 'text': 'joseph_ducreux'}, {'id': 5, 'text': 'hipster_gaston'}, {'id': 6, 'text': 'jimmy_mcmillan_rent_too_high'}, {'id': 7, 'text': 'bill_o_reilly'}, {'id': 8, 'text': 'pickup_line_scientist'}, {'id': 9, 'text': 'scumbag_steve'}, {'id': 10, 'text': 'creeper_canine'}, {'id': 11, 'text': 'slowpoke'}, {'id': 12, 'text': 'musically_oblivious_8th_grader'}, {'id': 13, 'text': 'online_diagnosis_octopus'}, {'id': 14, 'text': 'confucius_says'}, {'id': 15, 'text': 'imminent_ned'}, {'id': 16, 'text': 'minecraft'}, {'id': 17, 'text': 'annoying_childhood_friend'}, {'id': 18, 'text': 'advice_dog'}, {'id': 19, 'text': 'epic_jackie_chan'}, {'id': 20, 'text': 'stoner_dog'}, {'id': 21, 'text': 'hipster_ariel'}], [{'id': 0, 'text': 'hipster_kitty'}, {'id': 1, 'text': 'sexually_oblivious_rhino'}, {'id': 2, 'text': 'torrenting_turtle'}, {'id': 3, 'text': 'Insanity_puppy'}, {'id': 4, 'text': 'engineering_professor'}, {'id': 5, 'text': 'redneck_randal'}, {'id': 6, 'text': 'evil_plotting_raccoon'}, {'id': 7, 'text': 'good_dog_greg'}, {'id': 8, 'text': 'bad_advice_cat'}], [{'id': 0, 'text': 'forever_alone'}, {'id': 1, 'text': 'first_world_problems'}, {'id': 2, 'text': 'y_u_no_meme'}, {'id': 3, 'text': 'sad_keanu'}, {'id': 4, 'text': 'optimistic_crab'}, {'id': 5, 'text': 'butthurt_dweller'}, {'id': 6, 'text': 'troll_face'}], [{'id': 0, 'text': 'successful_black_man'}, {'id': 1, 'text': 'dating_site_murderer'}, {'id': 2, 'text': 'insanity_wolf'}, {'id': 3, 'text': 'horrifying_houseguest'}, {'id': 4, 'text': 'Lenin_cat'}, {'id': 5, 'text': 'hipster_jesus'}, {'id': 6, 'text': 'success_kid'}, {'id': 7, 'text': 'rasta_science_teacher'}], [{'id': 0, 'text': 'lame_pun_coon'}, {'id': 1, 'text': 'family_tech_support_guy'}, {'id': 2, 'text': 'the_most_interesting_man_in_the_world'}, {'id': 3, 'text': 'Futurama_fry'}, {'id': 4, 'text': 'high_expectations_asian_father'}], [{'id': 0, 'text': 'Good_guy_greg'}, {'id': 1, 'text': 'oblivious_suburban_mom'}, {'id': 2, 'text': 'helpful_tyler_durden'}]];
+            var init = false;
+            var random = true;
+            $(document).ready(function() {
+
+                $("#im_upload").click(function(event){
+                    random = false;
+                });
+
+                $(".btn").click(function(event){
+                    random = true;
+                    var num = parseInt(event.target.id);
+                    if (init){
+                        $('.cat_select').select2("destroy");
+                        $('.cat_select').find('option').remove();
+                    }
+                    $('.cat_select').select2({
+                        data : data[num],
+                    });    
+                    init = true;                   
+                });
+
+                $("#im_form").on('submit', function(e){
+                    e.preventDefault();
+                    var form_data = new FormData();
+                    var inputLogo = $("#im_upload")[0];
+                    form_data.append(inputLogo.id, inputLogo.files[0]);
+                    getCustomImage(form_data);
+                });
+
+            });
+
+            function memeify(){
+                if (random){
+                    getRandomImage();
+                }
+                else{
+                    $("#im_form").submit();
+                }
+            }
+
+            function showMeme(response){
+                console.log(response);
+                var imagePath = response['image_path'];
+                var upperText = response['upperText'];
+                var lowerText = response['lowerText'];
+                $("#my_image").attr("src",imagePath);
+                $(".toptext").html(upperText);
+                $(".bottomtext").html(lowerText);
+                $("#imgdiv").removeClass("d-none");
+            }
+
+            function getCustomImage(formData){
+                $.ajax({
+                    type:'POST',
+                    url: '/getCustomImage',
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    contentType : false,
+                    success:function(response){
+                        showMeme(response);
+                    },
+                    error: function(response){
+                        console.log("error");
+                    }
+                });
+                
+            }
+
+            function getRandomImage(){
+                var category = $('.cat_select').select2('data')[0].text;
+                $.ajax({
+                    url: "/getRandomImage",
+                    type: "GET",
+                    data: { 
+                        category : category,
+                    },
+                    success: function(response) {
+                        showMeme(response);
+                    },
+                    error: function(xhr) {
+                    }
+                });
+                
+            }
+        </script>
+    </body>
+</html>
