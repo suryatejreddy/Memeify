@@ -7,6 +7,9 @@ The meme captions and images are made available [here](https://drive.google.com/
 ## Generation
 The code for generating and sampling new memes can be found in the ``Memeify.ipynb`` notebook. For varying the quality of memes, please tune the ``temperature`` parameter in the code to modify the softmax distribution behaviour.
 
+## Demonstration
+A demo video of our paper is available [here](https://www.youtube.com/watch?v=P_Tfs0X-czs).
+
 ## Acknowledgements
 Parts of the code have been used from this [repository](https://github.com/minimaxir/gpt-2-simple).
 
